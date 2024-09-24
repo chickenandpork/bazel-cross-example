@@ -1,0 +1,15 @@
+load("@buildifier_prebuilt//:rules.bzl", "buildifier")
+
+cc_binary(
+    name = "main",
+    srcs = ["main.cc"],
+)
+
+buildifier(
+    name = "buildifier.check",
+    exclude_patterns = [
+        "./.git/*",
+    ],
+    lint_mode = "warn",
+    mode = "diff",
+)
